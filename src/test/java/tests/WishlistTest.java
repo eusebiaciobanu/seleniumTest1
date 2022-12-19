@@ -1,9 +1,14 @@
+package tests;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.AccountPage;
+import pages.HomePage;
+import pages.LoginPage;
 
 public class WishlistTest {
     private WebDriver driver;
@@ -20,11 +25,17 @@ public class WishlistTest {
     @Test
     public void addToWishlistTest(){
 
-        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
-        driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
-        driver.findElement(By.id("email")).sendKeys("cosmin@fasttrackit.org");
-        driver.findElement(By.id("pass")).sendKeys("123456");
-        driver.findElement(By.id("send2")).click();
+        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        AccountPage accountPage = new AccountPage(driver);
+
+        homePage.clickAccountButton();
+        homePage.clickLoginLink();
+        loginPage.setEmailField("cosmin@fasttrackit.org");
+        loginPage.setPasswordField("123456");
+        loginPage.clickLoginButton();
+
+
 
 
     }
