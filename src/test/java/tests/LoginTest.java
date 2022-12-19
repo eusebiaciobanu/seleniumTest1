@@ -15,6 +15,9 @@ import pages.LoginPage;
 public class LoginTest {
 
     private WebDriver driver;
+    private HomePage homePage;
+    private LoginPage loginPage;
+    private AccountPage accountPage;
 
     @Before
     public void initDriver() {
@@ -23,14 +26,14 @@ public class LoginTest {
 
         driver.manage().window().maximize();
         driver.get("http://testfasttrackit.info/selenium-test/");
+
+        homePage = new HomePage(driver);
+        loginPage = new LoginPage(driver);
+        accountPage = new AccountPage(driver);
     }
 
     @Test
     public void loginWithValidData() {
-        HomePage homePage = new HomePage(driver);
-        LoginPage loginPage = new LoginPage(driver);
-        AccountPage accountPage = new AccountPage(driver);
-
         homePage.clickAccountButton();
         homePage.clickLoginLink();
         loginPage.setEmailField("cosmin@fasttrackit.org");
@@ -42,8 +45,6 @@ public class LoginTest {
 
     @Test
     public void loginWithValidData1() {
-        HomePage homePage = new HomePage(driver);
-        LoginPage loginPage = new LoginPage(driver);
 
         homePage.clickAccountButton();
         homePage.clickLoginLink();
