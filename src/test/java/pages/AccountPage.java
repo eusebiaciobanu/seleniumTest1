@@ -17,6 +17,8 @@ public class AccountPage {
     @FindBy(css = ".hello strong")
     private WebElement welcomeTextElement;
 
+
+
     public String getWelcomeText(){
         return welcomeTextElement.getText();
     }
