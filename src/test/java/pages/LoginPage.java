@@ -15,7 +15,7 @@ public class LoginPage {
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(id = "email_address")
+    @FindBy(id = "email")
     private WebElement emailField;
     @FindBy(id = "send2")
     private WebElement loginButton;
@@ -28,7 +28,7 @@ public class LoginPage {
 
     @FindBy (id = "lastName")
     private WebElement LastName;
-    @FindBy (id =  "password")
+    @FindBy (id =  "pass")
     private WebElement passwordField;
 
     @FindBy (id = "confirmation")

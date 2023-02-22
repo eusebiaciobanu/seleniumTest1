@@ -7,14 +7,13 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.AccountPage;
 import pages.HomePage;
 import pages.LoginPage;
 
-public class LoginTest {
+public abstract class AbstractLoginTest {
 
-    private WebDriver driver;
+    protected WebDriver driver;
     private HomePage homePage;
     private LoginPage loginPage;
     private AccountPage accountPage;
@@ -22,14 +21,18 @@ public class LoginTest {
     @Before
     public void initDriver() {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
-        driver = new ChromeDriver();
+
+        setDriver();
 
         driver.manage().window().maximize();
         driver.get("http://testfasttrackit.info/selenium-test/");
 
         homePage = new HomePage(driver);
         accountPage = new AccountPage(driver);
+        loginPage = new LoginPage(driver);
     }
+
+    protected abstract void setDriver();
 
     @Test
     public void loginWithValidData() {
@@ -65,7 +68,6 @@ public class LoginTest {
 
     @Test
     public void loginWithValidData2() {
-
         driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
         driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
         driver.findElement(By.id("email")).sendKeys("ciobanueusebia@yahoo.com");
@@ -88,7 +90,4 @@ public class LoginTest {
     public void quit() {
         driver.close();
     }
-
-
-
 }

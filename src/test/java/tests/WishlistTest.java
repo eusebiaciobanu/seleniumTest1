@@ -36,6 +36,7 @@ public class WishlistTest {
 
         homePage.clickSaleLink();
         homePage.clickAddToWishList();
+
     }
     @After
     public void quit(){

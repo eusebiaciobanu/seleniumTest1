@@ -34,7 +34,6 @@ public class SearchTest {
         Assert.assertTrue(searchResultsPage.isProductInList("FRENCH CUFF COTTON TWILL OXFORD"));
         homePage.setSearchField("shirt");
         Assert.assertFalse(searchResultsPage.isProductInList("SILVER DESERT NECKLACE"));
-
     }
 
     @After
